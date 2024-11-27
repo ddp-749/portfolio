@@ -1,13 +1,23 @@
+:root {
+    --primary-color: #111;
+    --secondary-color: #fff;
+    --accent-color: #ccc;
+    --font-family: Arial, sans-serif;
+    --font-size-large: 3em;
+    --font-size-medium: 2em;
+    --font-size-small: 1em;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #111;
-    color: #fff;
+    font-family: var(--font-family);
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
     margin: 0;
     padding: 0;
+    line-height: 1.6;
 }
 
 .container {
-    margin: 0;
     padding: 20px;
 }
 
@@ -22,21 +32,25 @@ nav ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    gap: 15px;
 }
 
 nav ul li {
-    display: inline-block;
-    margin-right: 10px;
+    margin: 0;
 }
 
 nav ul li a {
-    color: #fff;
+    color: var(--secondary-color);
     text-decoration: none;
-    transition: color 0.3s;
+    font-size: var(--font-size-small);
+    transition: color 0.3s ease;
 }
 
-nav ul li a:hover {
-    color: #ccc;
+nav ul li a:hover,
+nav ul li a:focus {
+    color: var(--accent-color);
+    outline: none;
 }
 
 section {
@@ -45,27 +59,25 @@ section {
 }
 
 h2 {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid var(--accent-color);
     padding-bottom: 10px;
 }
 
-#about-me h2 {
-    font-size: 2em; /* Double the font size of "About Me" heading */
+#about-me h2,
+#contact h2,
+#skills-achievements h2 {
+    font-size: var(--font-size-large);
+    text-align: center;
 }
 
-#about-me {
-    font-size: 2em; /* Double the font size of the "About Me" section */
+#about-me,
+#contact,
+#skills-achievements {
+    font-size: var(--font-size-medium);
 }
 
-
-
-#contact h2 {
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 10px;
-    font-size: 4em;
-}
-
-#contact ul {
+#contact ul,
+#about-me ul {
     list-style-type: none;
     padding: 0;
 }
@@ -75,165 +87,92 @@ h2 {
 }
 
 #contact h4 {
-    font-weight: bold;
-    margin-bottom: 5px;
-    font-size: 3em;
-    
+    font-size: var(--font-size-large);
+    margin-bottom: 10px;
 }
 
 #contact p {
-    font-size: 2em;
+    font-size: var(--font-size-medium);
 }
 
-#about-me .introduction h3,
-#about-me .education h3,
-#about-me .passion-interests h3 {
+#about-me h3,
+#skills-achievements h3 {
     text-decoration: underline;
-    text-decoration-thickness: 2px;
-    font-size: 1.8em;
+    font-size: var(--font-size-medium);
+    margin-bottom: 15px;
 }
 
-#about-me .introduction p,
-#about-me .education p,
-#about-me .passion-interests p {
-    font-size: 0.8em; /* Adjust the font size for the content */
-    margin-bottom: 10px; /* Add margin to separate paragraphs */
-}
-
-
-#about-me .introduction ul,
-#about-me .education ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-#about-me .introduction li,
-#about-me .education li {
-    margin-bottom: 20px;
-}
-
-#about-me .introduction h4,
-#about-me .education h4 {
-    font-weight: bold;
-    margin-bottom: 5px;
+#about-me p,
+#skills-achievements p {
+    font-size: var(--font-size-small);
+    margin-bottom: 10px;
 }
 
 .active {
     display: block; /* Show only the active section */
 }
 
-
-#about-me .passion-interests ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-#about-me .passion-interests li {
-    margin-bottom: 10px;
-}
-
-#about-me .passion-interests h4 {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-#skills-achievements h2 {
-    font-size: 4em;
-}
-
-#skills-achievements .data-structures h3,
-#skills-achievements .languages h3 {
-    font-size: 3em; /* Set the font size for the headers */
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    margin-bottom: 10px;
-}
-
-#skills-achievements .data-structures p,
-#skills-achievements .languages p {
-    font-size: 1.7em;
-    line-height: 2; 
-    margin-bottom: 10px;/* Set the font size for the content */
-}
-
-#home {
-    text-align: center;
-    font-size: 3em; /* Set the font size to extra large */
-    margin-top: 20vh; /* Adjust the margin to center vertically */
-}
-
-/* Hide all sections by default */
-.section {
-    display: none;
-}
-
-/* Show only the active section */
 .section.active {
     display: block;
     animation: fadeInOut 0.5s forwards;
 }
 
+#home {
+    text-align: center;
+    font-size: var(--font-size-large);
+    margin-top: 20vh;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: var(--font-size-small);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    transform: scale(1.05);
+}
+
 @keyframes fadeInOut {
     0% {
         opacity: 0;
+        transform: translateY(20px);
     }
     100% {
         opacity: 1;
+        transform: translateY(0);
     }
 }
 
-nav {
-    position: relative;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+/* Media Queries for Mobile Devices */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin-bottom: 10px;
+    }
+
+    #home {
+        font-size: var(--font-size-medium);
+        margin-top: 10vh;
+    }
+
+    h2,
+    h3 {
+        font-size: calc(var(--font-size-medium) - 0.5em);
+    }
+
+    button {
+        width: 100%;
+    }
 }
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-}
-
-nav ul li {
-    margin-right: 20px;
-    position: relative;
-}
-
-nav ul li:last-child {
-    margin-right: 0;
-}
-
-.highlight {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 100%;
-    background-color: #ffcc00; /* Highlight color */
-    transition: width 0.3s ease; /* Smooth transition effect */
-    z-index: -1; /* Behind the text */
-}
-
-.nav-active {
-    color: #ffcc00; /* Highlight color */
-}
-
-.section-link {
-    position: relative;
-    z-index: 1; /* Above the highlight */
-    text-decoration: none;
-    color: #fff;
-    transition: color 0.3s;
-}
-
-.section-link:hover {
-    color: #ffcc00; /* Highlight color on hover */
-}
-
-
-
-
-
-
